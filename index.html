@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" content="Erik Williams">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Magic Eight Ball</title>
+</head>
+<body>
+  <h1>The Magic Eight Ball</h1>
+  <p>Ask a yes or no question, and the Magic Eight Ball will reveal your future</p>
+
+  <script>
+    // Array of 8 possible answers
+    const answers = [
+      "It is certain",
+      "Signs point to yes",
+      "Most likely",
+      "Yes, definitely",
+      "My sources say no.",
+      "Don't count on it",
+      "Very doubtful",
+      "No"
+    ];
+
+    let playAgain = true;
+
+    // Main loop to repeat game or loop back if no question given
+    while (playAgain) {
+      let question = prompt("What is your yes/no question for the Magic Eight Ball?");
+
+      if (question === null || question.trim() === "") {
+        alert("You must ask a question to continue");
+        continue;
+      }
+
+      // Random number generator to pick answer
+      let randomIndex = Math.floor(Math.random() * answers.length);
+      let response = answers[randomIndex];
+
+      alert("The Magic Eight Ball says:\n\n" + response);
+
+      // Prompt user to play again
+      let again = prompt("Would you like to ask another question? (Y/N)");
+      if (again === null || again.toUpperCase() !== "Y") {
+        playAgain = false;
+        alert("Thanks for playing, goodbye!");
+      }
+    }
+  </script>
+</body>
+</html>
